@@ -1,4 +1,4 @@
-package com.stevenyin.expr
+package com.stevenyin.chapter02.expr
 
 interface Expr
 

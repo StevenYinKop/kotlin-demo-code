@@ -1,4 +1,4 @@
-package com.stevenyin.bean
+package com.stevenyin.chapter02.bean
 
 //public class Person {
 //	private final String name;

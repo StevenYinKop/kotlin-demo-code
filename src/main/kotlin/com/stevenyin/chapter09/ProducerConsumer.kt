@@ -53,9 +53,32 @@ class ApplePearProducer: Producer<ApplePear> {
 	}
 }
 
+class Human: Consumer<Fruit> {
+	override fun consume(t: Fruit) {
+		println("Consume Fruit")
+	}
+}
+
+class Man: Consumer<Apple> {
+	override fun consume(t: Apple) {
+		println("Consume Apple")
+	}
+}
+class Boy: Consumer<ApplePear> {
+	override fun consume(t: ApplePear) {
+		println("Consume ApplePear")
+		
+	}
+}
+
 fun main() {
+	// 对于"out"泛型来说, 我们可以将子类型对象赋值给父类型引用
 	val produce1: Producer<Fruit> = FruitProducer()
 	val produce2: Producer<Fruit> = AppleProducer() // Producer<Apple>
 	val produce3: Producer<Fruit> = ApplePearProducer() // Producer<ApplePear>
+	// 对于"in"泛型来说, 我们可以将父类型对象付给子类型引用
+	val consumer1: Consumer<ApplePear> = Human()
+	val consumer2: Consumer<ApplePear> = Man()
+	val consumer3: Consumer<ApplePear> = Boy()
 	
 }

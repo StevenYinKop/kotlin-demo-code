@@ -1,4 +1,4 @@
-package com.stevenyin.enums
+package com.stevenyin.chapter02.enums
 
 // Enum 带有属性类型的枚举类型
 enum class Color(

@@ -1,5 +1,5 @@
 @file:JvmName("CollectionsUtils")
-package com.stevenyin.collections
+package com.stevenyin.chapter02.collections
 
 fun <T> jsonToString(
 	collection: Collection<T>,

@@ -1,4 +1,4 @@
-package com.stevenyin.loop
+package com.stevenyin.chapter02.loop
 
 import java.util.TreeMap
 

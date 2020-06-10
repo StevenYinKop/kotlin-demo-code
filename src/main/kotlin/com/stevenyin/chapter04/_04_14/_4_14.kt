@@ -1,4 +1,4 @@
-package com.stevenyin.chapter04
+package com.stevenyin.chapter04._04_14
 
 interface User {
 	val username: String

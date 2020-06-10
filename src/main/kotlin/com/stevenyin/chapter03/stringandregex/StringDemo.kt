@@ -1,4 +1,4 @@
-package com.stevenyin.stringandregex
+package com.stevenyin.chapter03.stringandregex
 
 import java.lang.IllegalStateException
 

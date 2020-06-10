@@ -1,4 +1,4 @@
-package com.stevenyin.exception
+package com.stevenyin.chapter02.exception
 
 import java.io.BufferedReader
 import java.io.StringReader
