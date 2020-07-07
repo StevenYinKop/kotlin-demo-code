@@ -1,4 +1,4 @@
-package com.stevenyin.actioninkotlin.chapter04._object
+package com.stevenyin.actioninkotlin.chapter04._04_08
 // 抽象类不能实例化
 abstract class Animated {
 	// 这个函数是abstract的, 它的子类要实现它 
