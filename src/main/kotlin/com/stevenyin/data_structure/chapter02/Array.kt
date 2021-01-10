@@ -1,20 +1,19 @@
 package com.stevenyin.data_structure.chapter02
 
 import com.stevenyin.data_structure.api.List
+import com.stevenyin.data_structure.api.AbstractList
 import kotlin.Array as Arr
 import java.lang.IllegalArgumentException
 import com.stevenyin.data_structure.model.Person
 
-class Array<E>: List<E> {
-	private var size = 0
+class Array<E>: AbstractList<E> {
 	private var array: Arr<Any?>
 	constructor(): this(10)
 	constructor (capacity: Int){
 		this.array = arrayOfNulls(capacity)
 	}
-	override fun getSize() = this.size
 	override fun add(e: E, index: Int) {
-		if (index < 0 || index > this.size) throw IllegalArgumentException("Invalid index: $index!")
+        checkIfOutOfBound(index)
 		if (this.array.size == this.size) {
 			this.resize(size * 2)
 		}
@@ -25,16 +24,15 @@ class Array<E>: List<E> {
 	    this.size++
 	}
 	override fun get(index: Int): E {
-		if (index < 0 || index > this.size) throw IllegalArgumentException("Invalid index: $index!")
+		checkIfOutOfBound(index)
 		return this.array[index] as E
 	}
 
 	override fun set(index: Int, e: E) {
-		if (index < 0 || index > this.size) throw IllegalArgumentException("Invalid index: $index!")
+        checkIfOutOfBound(index)
 		this.array[index] = e
 	}
-	override fun contains(e: E) = find(e) != -1
-	override fun find(e: E): Int {
+	override fun findIndex(e: E): Int {
 		for(i in 0 until this.size) {
 			if (this.array[i] == e) {
 				return i
@@ -43,6 +41,7 @@ class Array<E>: List<E> {
 		return -1
 	}
 	override fun del(index: Int): E {
+        checkIfOutOfBound(index, true)
 		if (index < 0 || index >= this.size) throw IllegalArgumentException("Invalid index: $index!")
 		val ret = this.array[index] as E
 		for(i in index + 1 until this.size) {
@@ -55,20 +54,6 @@ class Array<E>: List<E> {
 		}
 		return ret
 	}
-	override fun delFirst() = del(0)
-	override fun delLast() = del(this.size - 1)
-	override fun delElement(e: E): Boolean {
-		val index = find(e)
-		if (index != -1) {
-			del(index)
-			return true
-		} else {
-			return false
-		}
-	}
-	override fun isEmpty() = size == 0
-	override fun addLast(e: E) = add(e, size)
-	override fun addFirst(e: E) = add(e, 0)
 	override fun toString(): String {
 		val sb = StringBuilder("Array: size=$size, capacity=${this.array.size}, [")
 		for (i in 0 until size) {

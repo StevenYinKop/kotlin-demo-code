@@ -6,7 +6,7 @@ interface List<E> {
 	fun get(index: Int): E
 	fun set(index: Int, e: E)
 	fun contains(e: E): Boolean
-	fun find(e: E): Int
+	fun findIndex(e: E): Int
 	fun del(index: Int): E
 	fun delFirst(): E
 	fun delLast(): E
