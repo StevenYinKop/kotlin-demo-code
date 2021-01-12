@@ -34,14 +34,16 @@ class Linked<E>: AbstractList<E> {
     }
 
     override fun del(index: Int): E {
-        var node = findNode(index)
+        var res = first
         if (index == 0) {
             first = first!!.next
         } else {
-            node.next = node.next!!.next
+            var node = findNode(index - 1)
+            res = node.next
+            node.next = res!!.next
         }
         size --
-        return node.value
+        return res!!.value
     }
     
     private fun findNode(index: Int): Node<E> {
@@ -67,7 +69,12 @@ fun main(){
     var linked = Linked<Person>()
     println(linked.toString())
     for (i in 0..10) {
-        linked.addFirst(Person("Steven$i", i))   
+        val p = Person("Steven$i", i)
+        if (i % 2 == 0) {
+            linked.addFirst(p)   
+        } else {
+            linked.addLast(p)
+        }
         println(linked.toString())
     }
 //    for (i in 0..10) {
@@ -75,7 +82,11 @@ fun main(){
 //        println(linked.toString())
 //    }
     for (i in 0..10) {
-        linked.delFirst()
+        if (i % 2 == 0) {
+            linked.delFirst()  
+        } else {
+            linked.delLast()
+        }
         println(linked.toString())
     }
 }

@@ -1,5 +1,7 @@
-package com.stevenyin.leetcode._42
-
+package com.stevenyin.leetcode
+/**
+ * https://leetcode.com/problems/trapping-rain-water/
+ */
 class Solution {
     fun trap(height: IntArray): Int {
 		var area: Int = 0
