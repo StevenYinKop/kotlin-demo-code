@@ -21,7 +21,7 @@ class Array<E>: AbstractList<E> {
 			array[i + 1] = array[i]
 		}
 		this.array[index] = e
-	    this.size++
+	    super.size++
 	}
 	override fun get(index: Int): E {
 		checkIfOutOfBound(index)

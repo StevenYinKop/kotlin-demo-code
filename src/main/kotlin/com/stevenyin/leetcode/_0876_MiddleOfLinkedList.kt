@@ -10,4 +10,16 @@ package com.stevenyin.leetcode
  * }
  */
 class _0876_MiddleOfLinkedList {
+    fun middleNode(head: ListNode?): ListNode? {
+        if (head == null) return head
+        var fast = head.next
+        var slow = head
+        while (fast != null) {
+            slow = slow!!.next
+            fast = fast.next
+            if (fast != null) fast = fast.next
+            else return slow
+        }
+        return slow
+    }
 }

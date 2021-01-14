@@ -36,6 +36,3 @@ fun main(args: Array<String>) {
     }
     _203_Remove_Linked_List_Elements().removeElements(head.next, 6)
 }
-class ListNode(var `val`: Int) {
-    var next: ListNode? = null
-}

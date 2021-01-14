@@ -1,5 +1,5 @@
 package com.stevenyin.data_structure.model
 
-class Node<E>(var value: E, var next: Node<E>?) {
-    constructor(e: E): this(e, null)
+open class Node<E> constructor(value: E, next: Node<E>?) : DoublyNode<E>(null, value, next) {
+    constructor(value: E): this(value, null)
 }

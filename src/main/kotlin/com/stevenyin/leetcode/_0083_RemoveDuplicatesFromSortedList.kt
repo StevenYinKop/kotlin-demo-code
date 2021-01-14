@@ -7,4 +7,13 @@ package com.stevenyin.leetcode
  * }
  */
 class _0083_RemoveDuplicatesFromSortedList {
+    fun deleteDuplicates(head: ListNode?): ListNode? {
+        var node = head
+        while (node != null && node.next != null) {
+            if (node.`val` == node.next?.`val`) node.next = node.next?.next
+            else node = node.next
+        }
+        return head
+    }
 }
+

@@ -4,7 +4,7 @@ import com.stevenyin.data_structure.api.AbstractList
 import com.stevenyin.data_structure.model.Node
 import com.stevenyin.data_structure.model.Person
 
-class Linked<E>: AbstractList<E> {
+class SingleLinked<E>: AbstractList<E> {
     private var first: Node<E>? = null
     constructor() {}
     override fun add(e: E, index: Int) {
@@ -28,7 +28,7 @@ class Linked<E>: AbstractList<E> {
         var node = first
         for (i in 0 until size) {
             if (e!!.equals(node!!.value)) return i
-            node = node.next
+            node = node.next as Node
         }
         return -1
     }
@@ -36,11 +36,11 @@ class Linked<E>: AbstractList<E> {
     override fun del(index: Int): E {
         var res = first
         if (index == 0) {
-            first = first!!.next
+            first = first!!.next as Node
         } else {
             var node = findNode(index - 1)
-            res = node.next
-            node.next = res!!.next
+            res = node.next as Node
+            node.next = res.next
         }
         size --
         return res!!.value
@@ -50,7 +50,7 @@ class Linked<E>: AbstractList<E> {
         checkIfOutOfBound(index)
         var node: Node<E>? = first
         for (i in 0 until index) {
-            node = node!!.next
+            node = node!!.next as Node
         }
         return node as Node
     }
@@ -59,14 +59,14 @@ class Linked<E>: AbstractList<E> {
         val sb = StringBuffer("Linked[head]: ");
         while (node != null) {
             sb.append("${node.value} -> ")
-            node = node.next
+            node = node.next as Node
         }
         sb.append("NULL");
         return sb.toString()
     }
 }
 fun main(){
-    var linked = Linked<Person>()
+    var linked = SingleLinked<Person>()
     println(linked.toString())
     for (i in 0..10) {
         val p = Person("Steven$i", i)
