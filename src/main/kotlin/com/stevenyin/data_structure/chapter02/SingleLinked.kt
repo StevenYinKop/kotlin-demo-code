@@ -48,7 +48,7 @@ class SingleLinked<E>: AbstractList<E> {
     
     private fun findNode(index: Int): Node<E> {
         checkIfOutOfBound(index)
-        var node: Node<E>? = first
+        var node = first
         for (i in 0 until index) {
             node = node!!.next as Node
         }

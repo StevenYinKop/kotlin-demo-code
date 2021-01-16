@@ -4,6 +4,7 @@ import com.stevenyin.data_structure.api.AbstractList
 import com.stevenyin.data_structure.model.Node
 import com.stevenyin.data_structure.model.Person
 import com.stevenyin.data_structure.model.DoublyNode
+import java.util.concurrent.ThreadLocalRandom
 
 class DoublyLinked<E>: AbstractList<E> {
     private var first: DoublyNode<E>? = null
@@ -33,20 +34,39 @@ class DoublyLinked<E>: AbstractList<E> {
         println(this.toString())
     }
 
-    override fun get(index: Int): E {
-        TODO()
-    }
-
+    override fun get(index: Int) = findNode(index).value
     override fun set(index: Int, e: E) {
-        TODO()
+        findNode(index).value = e
     }
 
     override fun findIndex(e: E): Int {
-        TODO()
+        var node = first
+        var index = 0
+        while (node != null) {
+            if (node.value == null && e == null) return index
+            if (e != null && e.equals(node.value)) return index
+            index++
+        }
+        return -1
     }
 
     override fun del(index: Int): E {
-        TODO()
+        val node = findNode(index)
+        val pre = node.pre
+        val next = node.next
+        if (pre == null) {
+            first = next
+        } else {
+            pre.next = next
+        }
+        if (next == null) {
+            last = pre
+        } else {
+            next.pre = pre
+        }
+        size--
+        println(this.toString())
+        return node.value
     }
     override fun toString(): String {
         var node = first
@@ -84,4 +104,10 @@ fun main(){
     linked.addFirst(44) // 44 -> 11 -> 22 -> 33
     linked.add(55, 1) // 44 -> 55 -> 11 -> 22 -> 33
     linked.add(66, linked.size) // 44 -> 55 -> 11 -> 22 -> 33 -> 66
+    linked.add(77, linked.size / 2) // 44 -> 55 -> 11 -> 77 -> 22 -> 33 -> 66
+    while(!linked.isEmpty()) {
+        val index = ThreadLocalRandom.current().nextInt(0, linked.size)
+        print("删除索引为$index 的元素: ")
+        linked.del(index);
+    }
 }
