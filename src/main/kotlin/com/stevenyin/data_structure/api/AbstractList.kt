@@ -14,15 +14,10 @@ abstract class AbstractList<E>: List<E> {
         if (index != -1) {
             del(index)
             return true
-        } else {
-            return false
         }
+        return false
     }
     protected fun checkIfOutOfBound(index: Int, withBound: Boolean = false) {
-        if (withBound) {
-            if (index < 0 || index >= size) throw IllegalArgumentException("Invalid index: $index!")
-        } else {
-            if (index < 0 || index > size) throw IllegalArgumentException("Invalid index: $index!")
-        }
+        if (index < 0 || index > size || withBound && index == size) throw IllegalArgumentException("Invalid index: $index!")
     }
 }
