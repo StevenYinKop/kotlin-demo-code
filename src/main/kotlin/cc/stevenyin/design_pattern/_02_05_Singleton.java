@@ -5,7 +5,9 @@ package cc.stevenyin.design_pattern;
  */
 public class _02_05_Singleton {
     private _02_05_Singleton() {
-
+        if (getInstance() != null) {
+            throw new IllegalArgumentException("can not initialize singleton object!");
+        }
     }
 
     public static _02_05_Singleton getInstance() {

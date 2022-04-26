@@ -1,0 +1,38 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+    interface IPcFactory {
+        createKeyboard(): IKeyboard;
+        createMouse(): IMouse;
+        createSpeaker(): ISpeaker;
+    }
+    interface IKeyboard
+    IKeyboard <|-- MagicKeyboard
+    IKeyboard <|-- GoogleKeyboard
+
+    interface IMouse
+    IMouse <|-- MagicTrackpad
+    IMouse <|-- GoogleTouchpad
+
+    interface ISpeaker
+    ISpeaker <|-- HomePod
+    ISpeaker <|-- NestAudio
+
+    IPcFactory o--  IKeyboard
+    IPcFactory o--  IMouse
+    IPcFactory o--  ISpeaker
+
+    class MacbookFactory
+    class ChromebookFactory
+    IPcFactory <|-- MacbookFactory
+    IPcFactory <|-- ChromebookFactory
+
+
+    MacbookFactory o--  MagicKeyboard
+    MacbookFactory o--  MagicTrackpad
+    MacbookFactory o--  HomePod
+    ChromebookFactory o--  GoogleKeyboard
+    ChromebookFactory o--  NestAudio
+    ChromebookFactory o--  GoogleTouchpad
+@enduml
+

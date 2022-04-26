@@ -1,17 +1,21 @@
 package cc.stevenyin.design_pattern;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.Random;
 
 /**
  * 懒汉式(Double Check)
  */
-public class _02_04_Singleton {
+public class _02_04_Singleton implements Serializable {
     private static volatile _02_04_Singleton instance;
     private String name;
     private Date date;
 
     private _02_04_Singleton() {
+        if (instance != null) {
+            throw new IllegalArgumentException("can not initialize singleton object!");
+        }
         try {
             Thread.sleep(new Random().nextInt(10000));
             date = new Date();
@@ -52,6 +56,10 @@ public class _02_04_Singleton {
 
     public Date getDate() {
         return date;
+    }
+
+    public Object readResolve() {
+        return instance;
     }
 }
 
