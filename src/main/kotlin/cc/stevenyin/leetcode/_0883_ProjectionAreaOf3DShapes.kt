@@ -37,7 +37,7 @@ class _0883_ProjectionAreaOf3DShapes {
 
     private fun calcTopView(grid: Array<IntArray>) = grid.fold(0) { sum, ints -> sum + ints.filter { i -> i > 0 }.size }
 
-    private fun calcFrontView(grid: Array<IntArray>) = grid.fold(0) { sum, ints -> sum + ints.max()!! }
+    private fun calcFrontView(grid: Array<IntArray>) = grid.fold(0) { sum, ints -> sum + ints.maxOrNull()!! }
 
     private fun calcSideView(grid: Array<IntArray>): Int {
         val cacheArray = IntArray(grid.size)
