@@ -32,6 +32,27 @@ package cc.stevenyin.leetcode
  */
 class _0881_BoatsToSavePeople {
     fun numRescueBoats(people: IntArray, limit: Int): Int {
-        return 0
+        people.sort()
+        var right = people.size - 1
+        var left = 0
+        var boats = 0
+        while (left <= right) {
+            if (people[left] + people[right] <= limit) {
+                boats ++
+                left ++
+                right --
+            } else {
+                boats ++
+                right --
+            }
+        }
+        return boats
     }
+}
+
+fun main() {
+    val solution = _0881_BoatsToSavePeople()
+    assert(solution.numRescueBoats(intArrayOf(1, 2), 3) == 1)
+    assert(solution.numRescueBoats(intArrayOf(3, 2, 2, 1), 3) == 3)
+    assert(solution.numRescueBoats(intArrayOf(3, 5, 3, 4), 5) == 4)
 }
