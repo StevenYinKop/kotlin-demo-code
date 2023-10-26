@@ -15,7 +15,7 @@ class _0343_IntegerBreak {
         for (i in 1..n - 1) {
             result = kotlin.math.max(result, i * breakInteger(n - i, memo))
         }
-        memo[n] = result
+//        memo[n] = result
         return result
     }
 }
