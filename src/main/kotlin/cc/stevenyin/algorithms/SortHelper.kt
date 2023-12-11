@@ -8,6 +8,7 @@ class SortHelper {
 }
 
 fun <T> swap(array: Array<T>, index1: Int, index2: Int) {
+    if (index1 == index2) return
     val temp = array[index1]
     array[index1] = array[index2]
     array[index2] = temp

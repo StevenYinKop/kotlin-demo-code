@@ -4,14 +4,15 @@ import cc.stevenyin.algorithms.swap
 import cc.stevenyin.algorithms.testSortAlgorithm
 
 class _01_SelectionSort: SortAlgorithm {
-
     fun <T: Comparable<T>> selectionSort(array: Array<T>) {
         for (idx1 in array.indices) {
+            var minIndex = idx1
             for (idx2 in idx1 + 1 until array.size) {
-                if (array[idx1] > array[idx2]) {
-                    swap(array, idx1, idx2)
+                if (array[minIndex] > array[idx2]) {
+                    minIndex = idx2
                 }
             }
+            swap(array, idx1, minIndex)
         }
     }
 
