@@ -3,6 +3,9 @@ package cc.stevenyin.algorithms._02_sorts
 import cc.stevenyin.algorithms.testSortAlgorithm
 
 class _04_MergeSort: SortAlgorithm {
+    override val name: String
+        get() = "MergeSort_Recursive"
+
     override fun <T : Comparable<T>> sort(array: Array<T>) {
         // 维护变量在算法运行过程中的定义是写好算法的基础
         val left = 0
@@ -57,7 +60,7 @@ class _04_MergeSort: SortAlgorithm {
 }
 
 fun main() {
-    testSortAlgorithm("_04_MergeSort", _04_MergeSort(), 500)
+    testSortAlgorithm(500, _04_MergeSort())
 }
 
 

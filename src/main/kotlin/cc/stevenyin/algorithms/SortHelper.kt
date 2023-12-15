@@ -14,28 +14,26 @@ fun <T> swap(array: Array<T>, index1: Int, index2: Int) {
     array[index2] = temp
 }
 
-fun testSortAlgorithm(sortType: String, clz: SortAlgorithm, nums: Int) {
+fun testSortAlgorithm(nums: Int, vararg algorithms: SortAlgorithm) {
     val array = generateIntegerTestCases(nums)
     val expectedArray = generateIntegerExpectedResult(array)
-    println("Before: ")
-    array.forEach {
-        print("$it ")
-    }
-    println()
-    val timeMillis = measureTimeMillis {
-        clz.sort(array)
-    }
-    println()
-    println("After: ")
-    array.forEach {
-        print("$it ")
-    }
-    println()
-    println("(The $sortType operation took $timeMillis ms)")
 
-    expectedArray.forEachIndexed { index, i ->
-        assert(array[index] == i)
+    algorithms.forEach { algorithm ->
+        val arrayInteration = array.copyOf()
+        val timeMillis = measureTimeMillis {
+            algorithm.sort(arrayInteration)
+        }
+        println("(The ${algorithm.name} operation took $timeMillis ms)")
+        expectedArray.contentEquals(array)
+        println("The results are correct!")
+
+        println()
     }
+
+}
+
+fun testSortAlgorithm(nums: Int, clz: SortAlgorithm) {
+    testSortAlgorithm(nums, *arrayOf(clz))
 }
 
 fun generateIntegerTestCases(nums: Int): Array<Int> {

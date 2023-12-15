@@ -4,6 +4,7 @@ import cc.stevenyin.algorithms.swap
 import cc.stevenyin.algorithms.testSortAlgorithm
 
 class _02_InsertionSort: SortAlgorithm {
+    override val name: String = "InsertionSort"
     override fun <T : Comparable<T>> sort(array: Array<T>) {
         for (i in 1 until array.size) {
             for (j in i downTo 0) {
@@ -18,7 +19,7 @@ class _02_InsertionSort: SortAlgorithm {
 }
 
 fun main() {
-    testSortAlgorithm("_02_InsertionSort", _02_InsertionSort(), 500)
+    testSortAlgorithm(100000, _01_SelectionSort(), _02_InsertionSort())
 }
 
 

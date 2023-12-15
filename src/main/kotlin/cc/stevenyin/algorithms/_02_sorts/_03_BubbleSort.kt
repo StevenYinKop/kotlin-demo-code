@@ -4,6 +4,8 @@ import cc.stevenyin.algorithms.swap
 import cc.stevenyin.algorithms.testSortAlgorithm
 
 class _03_BubbleSort: SortAlgorithm {
+    override val name: String = "BubbleSort"
+
     override fun <T : Comparable<T>> sort(array: Array<T>) {
         val size = array.size
         for (i in 0 until size - 1) {
@@ -17,7 +19,7 @@ class _03_BubbleSort: SortAlgorithm {
 }
 
 fun main() {
-    testSortAlgorithm("_03_BubbleSort", _03_BubbleSort(), 500)
+    testSortAlgorithm(100000, _01_SelectionSort(), _02_InsertionSort(), _03_BubbleSort())
 }
 
 

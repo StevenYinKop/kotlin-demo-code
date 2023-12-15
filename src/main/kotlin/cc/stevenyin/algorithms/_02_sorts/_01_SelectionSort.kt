@@ -3,7 +3,8 @@ package cc.stevenyin.algorithms._02_sorts
 import cc.stevenyin.algorithms.swap
 import cc.stevenyin.algorithms.testSortAlgorithm
 
-class _01_SelectionSort: SortAlgorithm {
+class _01_SelectionSort : SortAlgorithm {
+    override val name: String = "SelectionSort"
     fun <T: Comparable<T>> selectionSort(array: Array<T>) {
         for (idx1 in array.indices) {
             var minIndex = idx1
@@ -20,5 +21,5 @@ class _01_SelectionSort: SortAlgorithm {
 }
 
 fun main() {
-    testSortAlgorithm("_01_SelectionSort", _01_SelectionSort(), 10000)
+    testSortAlgorithm(10000, _01_SelectionSort())
 }
