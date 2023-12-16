@@ -1,5 +1,6 @@
 package cc.stevenyin.algorithms._02_sorts
 
+import cc.stevenyin.algorithms.RandomType
 import cc.stevenyin.algorithms.testSortAlgorithm
 
 class _04_MergeSort: SortAlgorithm {
@@ -60,7 +61,7 @@ class _04_MergeSort: SortAlgorithm {
 }
 
 fun main() {
-    testSortAlgorithm(500, _04_MergeSort())
+    testSortAlgorithm(500, RandomType.CHAOS, _04_MergeSort())
 }
 
 

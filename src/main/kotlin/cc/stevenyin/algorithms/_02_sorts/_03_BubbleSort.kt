@@ -1,5 +1,6 @@
 package cc.stevenyin.algorithms._02_sorts
 
+import cc.stevenyin.algorithms.RandomType
 import cc.stevenyin.algorithms.swap
 import cc.stevenyin.algorithms.testSortAlgorithm
 
@@ -19,7 +20,7 @@ class _03_BubbleSort: SortAlgorithm {
 }
 
 fun main() {
-    testSortAlgorithm(100000, _01_SelectionSort(), _02_InsertionSort(), _03_BubbleSort())
+    testSortAlgorithm(100000, RandomType.CHAOS, _01_SelectionSort(), _02_InsertionSort(), _03_BubbleSort())
 }
 
 
