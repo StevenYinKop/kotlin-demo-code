@@ -1,7 +1,6 @@
 package cc.stevenyin.algorithms
 
 import cc.stevenyin.algorithms._02_sorts.SortAlgorithm
-import java.util.Spliterator.ORDERED
 import kotlin.random.Random
 import kotlin.system.measureTimeMillis
 
@@ -12,7 +11,7 @@ enum class RandomType() {
         override fun generate(nums: Int): Array<Int> {
             val random = Random(System.currentTimeMillis())
             val result = Array(nums) { it }
-            for (i in 0 .. nums / 10) {
+            for (i in 0..10) {
                 swap(result, random.nextInt(result.size), random.nextInt(result.size))
             }
             return result
@@ -25,6 +24,17 @@ enum class RandomType() {
                 Array(nums) { 0 }
             for (i in 0 until nums) {
                 result[i] = random.nextInt(0, nums)
+            }
+            return result
+        }
+    },
+    CLOSE_RANGE {
+        override fun generate(nums: Int): Array<Int> {
+            val random = Random(System.currentTimeMillis())
+            val result =
+                Array(nums) { 0 }
+            for (i in 0 until nums) {
+                result[i] = random.nextInt(0, 5)
             }
             return result
         }
@@ -50,9 +60,12 @@ fun testSortAlgorithm(nums: Int, type: RandomType, vararg algorithms: SortAlgori
     val expectedArray = generateIntegerExpectedResult(array)
 
     algorithms.forEach { algorithm ->
-        val arrayInteration = array.copyOf()
+        val arrayIteration = array.copyOf()
         val timeMillis = measureTimeMillis {
-            algorithm.sort(arrayInteration)
+            algorithm.sort(arrayIteration)
+        }
+        if (nums <= 20) {
+            println("The final array is ${arrayIteration.contentToString()}")
         }
         println("(The ${algorithm.name} operation took $timeMillis ms)")
         assert(expectedArray.contentEquals(array)) { "The results aren incorrect!" }

@@ -49,7 +49,7 @@ class _04_MergeSort: SortAlgorithm {
             }
             val l = aux[i - left] as T
             val r = aux[j - left] as T
-            if (l > r) {
+            if (l < r) {
                 array[cursor] = l
                 i ++
             } else {
@@ -61,7 +61,7 @@ class _04_MergeSort: SortAlgorithm {
 }
 
 fun main() {
-    testSortAlgorithm(500, RandomType.CHAOS, _04_MergeSort())
+    testSortAlgorithm(15, RandomType.NEARLY_ORDERED, _01_SelectionSort(), _02_InsertionSort(), _04_MergeSort())
 }
 
 
